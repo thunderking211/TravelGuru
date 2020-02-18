@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "64995470109",
+    "firebase_url": "https://travel-guru-1c6f3.firebaseio.com",
+    "project_id": "travel-guru-1c6f3",
+    "storage_bucket": "travel-guru-1c6f3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:64995470109:android:65610a9e9767dc060bcff4",
+        "android_client_info": {
+          "package_name": "com.rj.travelguru"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "64995470109-to8mcj6eirkdsiftrm74lskll1ab8js1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.rj.travelguru",
+            "certificate_hash": "3fbb6b8729ab2cce3bbf5578a3387336f6f4b273"
+          }
+        },
+        {
+          "client_id": "64995470109-669v9hvevep5jr503imkve1a7v91o9n4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBQJMcPkPHbhsOuQAmHk1dEZ7KqyCGHS-0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "64995470109-669v9hvevep5jr503imkve1a7v91o9n4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

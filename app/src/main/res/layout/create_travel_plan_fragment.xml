@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/createtravelplan"
+        tools:context=".ui.createtravelplan.CreateTravelPlanFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:text="Create Your Travel Plan"
+            android:id="@+id/crete_travel_plan_heading"
+            tools:ignore="HardcodedText"
+            android:textSize="25dp"
+            android:textStyle="bold"
+            android:textIsSelectable="false"
+            />
+        <EditText
+            android:layout_width="@dimen/edittextbox_width"
+            android:layout_height="@dimen/editbox_hieght"
+            android:layout_marginTop="40dp"
+            android:id="@+id/crete_travel_plan_address"
+            android:hint="Your Address"
+            android:isScrollContainer="false"
+            android:focusable="true"
+            android:maxLines="1"
+            android:editable="true"
+            android:enabled="true"
+            />
+        <EditText
+            android:layout_width="@dimen/edittextbox_width"
+            android:layout_height="@dimen/editbox_hieght"
+            android:id="@+id/crete_travel_plan_categories"
+            android:hint="Types of Places "
+            android:isScrollContainer="false"
+            android:focusable="true"
+            android:maxLines="1"
+            android:editable="true"
+            android:enabled="true"/>
+
+        <TextView
+            android:layout_marginTop="5dp"
+            android:layout_width="@dimen/edittextbox_width"
+            android:layout_height="wrap_content"
+            android:text="Choose Your Free Timings"
+            tools:ignore="HardcodedText"
+            android:textSize="20dp"
+            android:textIsSelectable="false"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <EditText
+                android:layout_width="@dimen/time_selectbox"
+                android:layout_height="@dimen/editbox_hieght"
+                android:id="@+id/crete_travel_plan_startTime"
+                android:hint="Start"
+                android:isScrollContainer="false"
+                android:focusable="true"
+                android:maxLines="1"
+                android:editable="false"
+                android:enabled="true"
+                android:textIsSelectable="false"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="To"
+                android:textSize="20dp"
+                android:isScrollContainer="false"
+                android:focusable="true"
+                android:maxLines="1"
+                android:editable="true"
+                android:textIsSelectable="false"/>
+            <EditText
+                android:layout_width="@dimen/time_selectbox"
+                android:layout_height="@dimen/editbox_hieght"
+                android:id="@+id/crete_travel_plan_endTime"
+                android:hint="End"
+                android:layout_marginLeft="7dp"
+                android:isScrollContainer="false"
+                android:focusable="true"
+                android:maxLines="1"
+                android:editable="false"
+                android:enabled="true"
+                android:textIsSelectable="false"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>
