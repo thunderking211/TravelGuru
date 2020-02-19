@@ -16,7 +16,6 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TimePicker;
 
-import com.rj.travelguru.CreateTravelPlan;
 import com.rj.travelguru.R;
 
 import java.util.Calendar;
