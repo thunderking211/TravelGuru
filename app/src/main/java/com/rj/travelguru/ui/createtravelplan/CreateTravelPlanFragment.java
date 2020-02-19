@@ -18,6 +18,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -61,6 +62,8 @@ public class CreateTravelPlanFragment extends Fragment {
     private String startAmPm,endAmPm;
     private String Tag = "MyMessage";
     private String ErrorTag = "Error Message";
+    int Duration = 1000;
+
 
     private CreateTravelPlanViewModel mViewModel;
 
@@ -148,12 +151,14 @@ public class CreateTravelPlanFragment extends Fragment {
                             @Override
                             public void onSuccess(DocumentReference documentReference) {
                                 Log.d(Tag,"DocumentSnapshot added with ID: " + documentReference.getId());
+                                Toast.makeText(mContext,"Successfull",Toast.LENGTH_SHORT).show();
                             }
                         })
                         .addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {
                                 Log.w(ErrorTag,"Error While Adding Document",e);
+                                Toast.makeText(mContext,"UnSuccessfull",Toast.LENGTH_SHORT).show();
                             }
                         });
             }
