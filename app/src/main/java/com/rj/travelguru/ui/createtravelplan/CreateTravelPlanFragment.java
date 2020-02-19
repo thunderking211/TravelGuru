@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.TimePicker;
 
 import com.rj.travelguru.R;
@@ -33,8 +34,8 @@ public class CreateTravelPlanFragment extends Fragment {
         mContext=context;
     }
 
-    private EditText sTime;
-    private EditText eTime;
+    private TextView sTime;
+    private TextView eTime;
     private TimePickerDialog timePickerDialog;
     private Calendar calendar;
     private int currentHour;
@@ -52,8 +53,8 @@ public class CreateTravelPlanFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         View view= inflater.inflate(R.layout.create_travel_plan_fragment, container, false);
 
-        sTime = view.findViewById(R.id.crete_travel_plan_startTime);
-        eTime = view.findViewById(R.id.crete_travel_plan_endTime);
+        sTime = (TextView)view.findViewById(R.id.crete_travel_plan_startTime);
+        eTime = (TextView)view.findViewById(R.id.crete_travel_plan_endTime);
         calendar = Calendar.getInstance();
         sTime.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,7 +66,9 @@ public class CreateTravelPlanFragment extends Fragment {
                     public void onTimeSet(TimePicker timePicker, int hourOfDay, int minute) {
                         if(hourOfDay >= 12) {amPm = "PM";}
                         else {amPm = "AM";}
+                        sTime.setTextSize(20);
                         sTime.setText(String.format("%02d:%02d ",hourOfDay,minute)+amPm);
+
                     }
                 }, currentHour,currentMinute,false );
                 timePickerDialog.show();
@@ -82,6 +85,7 @@ public class CreateTravelPlanFragment extends Fragment {
                     public void onTimeSet(TimePicker timePicker, int hourOfDay, int minute) {
                         if(hourOfDay >= 12) {amPm = "PM";}
                         else {amPm = "AM";}
+                        eTime.setTextSize(20);
                         eTime.setText(String.format("%02d:%02d ",hourOfDay,minute)+amPm);
                     }
                 }, currentHour,currentMinute,false );

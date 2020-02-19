@@ -2,8 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+    <LinearLayout
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/createtravelplan"
         tools:context=".ui.createtravelplan.CreateTravelPlanFragment"
@@ -31,7 +30,7 @@
             android:hint="Your Address"
             android:isScrollContainer="false"
             android:focusable="true"
-            android:maxLines="1"
+            android:singleLine="true"
             android:editable="true"
             android:enabled="true"
             />
@@ -44,6 +43,7 @@
             android:focusable="true"
             android:maxLines="1"
             android:editable="true"
+            android:singleLine="true"
             android:enabled="true"/>
 
         <TextView
@@ -60,15 +60,14 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <EditText
+            <TextView
                 android:layout_width="@dimen/time_selectbox"
                 android:layout_height="@dimen/editbox_hieght"
                 android:id="@+id/crete_travel_plan_startTime"
-                android:hint="Start"
-                android:isScrollContainer="false"
+                android:text="Start"
+                android:textSize="25dp"
                 android:focusable="true"
                 android:maxLines="1"
-                android:editable="false"
                 android:enabled="true"
                 android:textIsSelectable="false"/>
             <TextView
@@ -81,20 +80,25 @@
                 android:maxLines="1"
                 android:editable="true"
                 android:textIsSelectable="false"/>
-            <EditText
+            <TextView
                 android:layout_width="@dimen/time_selectbox"
                 android:layout_height="@dimen/editbox_hieght"
                 android:id="@+id/crete_travel_plan_endTime"
-                android:hint="End"
+                android:text="End"
+                android:textSize="25dp"
                 android:layout_marginLeft="7dp"
                 android:isScrollContainer="false"
                 android:focusable="true"
-                android:maxLines="1"
                 android:editable="false"
                 android:enabled="true"
                 android:textIsSelectable="false"/>
 
         </LinearLayout>
-
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="80dp"
+            android:text="@string/button_submit"
+            android:id="@+id/submit_btn"/>
     </LinearLayout>
 </ScrollView>
