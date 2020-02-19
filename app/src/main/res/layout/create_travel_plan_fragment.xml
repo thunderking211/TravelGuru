@@ -37,7 +37,7 @@
         <EditText
             android:layout_width="@dimen/edittextbox_width"
             android:layout_height="@dimen/editbox_hieght"
-            android:id="@+id/crete_travel_plan_categories"
+            android:id="@+id/crete_travel_plan_places"
             android:hint="Types of Places "
             android:isScrollContainer="false"
             android:focusable="true"
