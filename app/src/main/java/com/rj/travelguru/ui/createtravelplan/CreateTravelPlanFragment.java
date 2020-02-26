@@ -61,7 +61,7 @@ public class CreateTravelPlanFragment extends Fragment {
     private int endHour,endMinute;
     private String startAmPm,endAmPm;
     private String Tag = "MyMessage";
-    private String ErrorTag = "Error Message";
+    private String ErrorTag = "ErrorMessage";
     int Duration = 1000;
 
 
@@ -157,8 +157,8 @@ public class CreateTravelPlanFragment extends Fragment {
                         .addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {
-                                Log.w(ErrorTag,"Error While Adding Document",e);
                                 Toast.makeText(mContext,"UnSuccessfull",Toast.LENGTH_SHORT).show();
+                                Log.w(ErrorTag,"Error While Adding Document",e);
                             }
                         });
             }
