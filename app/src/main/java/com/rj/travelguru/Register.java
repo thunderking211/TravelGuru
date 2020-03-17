@@ -104,7 +104,29 @@ public class Register extends AppCompatActivity {
 
                 //register user in firbasse
 
-                
+                db = FirebaseFirestore.getInstance();
+                Map<String,Object> userData = new HashMap<>();
+                userData.put(nameKey,name);
+                userData.put(emailKey,email);
+                userData.put(phoneKey,phoneNo);
+                userData.put(passwordkey,password);
+
+                db.collection("Users")
+                        .add(userData)
+                        .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                            @Override
+                            public void onSuccess(DocumentReference documentReference) {
+                                Log.d(Tag,"DocumentSnapshot added with ID: " + documentReference.getId());
+                                Toast.makeText(Register.this,"Successfull",Toast.LENGTH_SHORT).show();
+                            }
+                        })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(Register.this,"UnSuccessfull",Toast.LENGTH_SHORT).show();
+                                Log.w(ErrorTag,"Error While Adding Document",e);
+                            }
+                        });
             }
         });
     }
