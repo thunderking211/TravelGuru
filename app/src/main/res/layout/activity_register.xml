@@ -130,7 +130,7 @@
             tools:ignore="NotSibling" />
 
         <TextView
-            android:id="@+id/login"
+            android:id="@+id/LoginTxt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Already Register ? Login Here"

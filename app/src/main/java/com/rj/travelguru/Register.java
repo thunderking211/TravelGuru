@@ -39,12 +39,12 @@ public class Register extends AppCompatActivity {
         setContentView(R.layout.activity_register);
 
 
-        mFullname = findViewById(R.id.fullname);
-        mEmail = findViewById(R.id.Email);
-        mPassword = findViewById(R.id.PPassword);
-        mRegisterBtn = findViewById(R.id.registerbtn);
-        mPhoneNo = findViewById(R.id.phoneno);
-        mLogin = findViewById(R.id.login);
+        mFullname =(EditText) findViewById(R.id.fullname);
+        mEmail =(EditText) findViewById(R.id.Email);
+        mPassword =(EditText) findViewById(R.id.PPassword);
+        mRegisterBtn =(Button) findViewById(R.id.registerbtn);
+        mPhoneNo =(EditText) findViewById(R.id.phoneno);
+        mLogin =(TextView) findViewById(R.id.LoginTxt);
         mRegisterBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -62,6 +62,7 @@ public class Register extends AppCompatActivity {
                 final String passwordkey = "password";
 
                 if(TextUtils.isEmpty(name)){
+
                     mFullname.setError("Name is Required.");
                     return;
                 }
@@ -76,13 +77,13 @@ public class Register extends AppCompatActivity {
                     return;
                 }
 
-                if (phoneNo.length() < 10 || phoneNo.length() > 10) {
+                if (phoneNo.length() != 10) {
                     mPhoneNo.setError("Enter a valid Phone Number");
                     return;
                 }
 
                 if(!matcher.matches()){
-                    mPhoneNo.setError("Enter a valid Email Address");
+                    mEmail.setError("Enter a valid Email Address");
                     return;
                 }
 
@@ -127,6 +128,14 @@ public class Register extends AppCompatActivity {
                                 Log.w(ErrorTag,"Error While Adding Document",e);
                             }
                         });
+            }
+        });
+
+        mLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Register.this, Login.class);
+                startActivity(intent);
             }
         });
     }
