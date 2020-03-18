@@ -15,8 +15,12 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -145,10 +149,27 @@ public class Register extends AppCompatActivity {
 
                 root = FirebaseDatabase.getInstance();
                 reference = root.getReference("users");
+                Query checkUser = reference.orderByChild("username").equalTo(username);
+                checkUser.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        if(dataSnapshot.exists()){
+                            mUsername.setError("User Already Exists");
+                            mUsername.requestFocus();
+                            return;
+                        }
+                    }
 
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
                 UserHelperClass user = new UserHelperClass(name,username,phoneNo,email,password);
-
                 reference.child(username).setValue(user);
+
+                Intent i = new Intent(Register.this,MainActivity.class);
+                startActivity(i);
             }
         });
 
