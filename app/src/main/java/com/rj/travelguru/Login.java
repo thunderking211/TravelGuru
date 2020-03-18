@@ -26,9 +26,9 @@ public class Login extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        mLogin = (Button)findViewById(R.id.loginbtn);
+        mLogin = (Button)findViewById(R.id.LoginBtn);
         mRegister = (TextView)findViewById(R.id.create_account);
-        mUsername = (EditText)findViewById(R.id.Username);
+        mUsername = (EditText)findViewById(R.id.username);
         mPassword = (EditText)findViewById(R.id.PPassword);
 
         mLogin.setOnClickListener(new View.OnClickListener() {
@@ -37,7 +37,7 @@ public class Login extends AppCompatActivity {
             public void onClick(View v) {
 
                 final String uEnteredUsername = mUsername.getText().toString().trim();
-                final String uEnteredPassword = mPassword.getText().toString().trim();
+                final String uEnteredPassword = mPassword.getText().toString();
 
                 if(uEnteredUsername.isEmpty()) {
                     mUsername.setError("UserName is Required");
@@ -59,7 +59,7 @@ public class Login extends AppCompatActivity {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         if(dataSnapshot.exists()){
-                            String passwordFromDb = dataSnapshot.child(uEnteredUsername).child("username").getValue(String.class);
+                            String passwordFromDb = dataSnapshot.child(uEnteredUsername).child("password").getValue(String.class);
                             if(passwordFromDb.equals(uEnteredPassword)){
                                 Intent i = new Intent(Login.this,MainActivity.class);
                                 startActivity(i);
