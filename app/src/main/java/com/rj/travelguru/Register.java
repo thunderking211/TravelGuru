@@ -15,6 +15,8 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -26,10 +28,12 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Register extends AppCompatActivity {
-    EditText mFullname,mEmail,mPassword,mPhoneNo;
+    EditText mFullname,mEmail,mPassword,mPhoneNo,mUsername;
     Button mRegisterBtn;
     TextView mLogin;
     private FirebaseFirestore db;
+    FirebaseDatabase root;
+    DatabaseReference reference;
     private String Tag = "Success Messsage";
     private String ErrorTag = "Error Messsage";
 
@@ -42,6 +46,7 @@ public class Register extends AppCompatActivity {
         mFullname =(EditText) findViewById(R.id.fullname);
         mEmail =(EditText) findViewById(R.id.Email);
         mPassword =(EditText) findViewById(R.id.PPassword);
+        mUsername = (EditText)findViewById(R.id.Username);
         mRegisterBtn =(Button) findViewById(R.id.registerbtn);
         mPhoneNo =(EditText) findViewById(R.id.phoneno);
         mLogin =(TextView) findViewById(R.id.LoginTxt);
@@ -52,6 +57,7 @@ public class Register extends AppCompatActivity {
                 String password = mPassword.getText().toString().trim();
                 String name = mFullname.getText().toString();
                 String phoneNo = mPhoneNo.getText().toString();
+                String username = mUsername.getText().toString().trim();
                 final String EMAIL_PATTERN = "^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
                 Pattern pattern = Pattern.compile(EMAIL_PATTERN);
                 Matcher matcher = pattern.matcher(email);
@@ -64,6 +70,12 @@ public class Register extends AppCompatActivity {
                 if(TextUtils.isEmpty(name)){
 
                     mFullname.setError("Name is Required.");
+                    return;
+                }
+
+                if(TextUtils.isEmpty(username)){
+
+                    mUsername.setError("UserName is Required.");
                     return;
                 }
 
@@ -103,9 +115,9 @@ public class Register extends AppCompatActivity {
                 }
 
 
-                //register user in firbasse
+                //register user in firbasse firestore
 
-                db = FirebaseFirestore.getInstance();
+                /*db = FirebaseFirestore.getInstance();
                 Map<String,Object> userData = new HashMap<>();
                 userData.put(nameKey,name);
                 userData.put(emailKey,email);
@@ -127,9 +139,20 @@ public class Register extends AppCompatActivity {
                                 Toast.makeText(Register.this,"UnSuccessfull",Toast.LENGTH_SHORT).show();
                                 Log.w(ErrorTag,"Error While Adding Document",e);
                             }
-                        });
+                        });*/
+
+                //sending data into realtime database
+
+                root = FirebaseDatabase.getInstance();
+                reference = root.getReference("users");
+
+                UserHelperClass user = new UserHelperClass(name,username,phoneNo,email,password);
+
+                reference.child(username).setValue(user);
             }
         });
+
+
 
         mLogin.setOnClickListener(new View.OnClickListener() {
             @Override
